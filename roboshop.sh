@@ -20,7 +20,7 @@ do
             --query 'Reservations[].Instances[].PublicIpAddress' \
             --output text
         )
-        RECORD_NAME="$DOMAIN_NAME" # daws88s.online
+        
     else
         IP=$(
             aws ec2 describe-instances \
@@ -31,7 +31,7 @@ do
         
     fi    
 
-   echo "IP address : $IP"
+   echo "IP address :$IP"
 
 done
 
