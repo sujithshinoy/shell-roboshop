@@ -5,9 +5,9 @@ AMI_ID="ami-0220d79f3f480ecf5"
 
 for instance in $@
 do
- INSTANCE_ID = $(aws ec2 run-instances \ 
+ INSTANCE_ID =$(aws ec2 run-instances \ 
  --image-id $AMI_ID \
- --instance-type t3.micro \ 
+ --instance-type "t3.micro" \ 
  --security-group-ids $SG_ID \ 
  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance}]" \ 
  --query 'Instances[0].InstanceId' \
@@ -28,10 +28,10 @@ do
             --query 'Reservations[].Instances[].PrivateIpAddress' \
             --output text
         )
-        RECORD_NAME="$instance.$DOMAIN_NAME" # mongodb.daws88s.online
+        
     fi    
 
-   echo "IP address $IP"
-   
+   echo "IP address : $IP"
+
 done
 
